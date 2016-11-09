@@ -109,10 +109,6 @@ public class MathUtil {
         return (data[data.length * 3 / 4] + data[(data.length - 1) * 3 / 4]) / 2.0;
     }
 
-    public static void main(String[] args) {
-        int[] nums1 = {1, 2, 3}, nums2 = {1, 2, 3, 4};
-    }
-
     public static void analyze(int[] data) {
         final int min = min(data);
         final int max = max(data);

@@ -38,21 +38,13 @@ public class UnitUtil {
         return modifiers;
     }
 
-    private static <K, V> void printMap(Map<K, V> map) {
-        List<String> pairs = new ArrayList<>(map.size());
-        for (Map.Entry<K, V> entry : map.entrySet()) {
-            pairs.add(String.format("%s:%s", entry.getKey().toString(),
-                    entry.getValue().toString()));
-        }
-        System.out.println(String.format("[%s]", String.join(", ", pairs)));
-    }
-
     public static void main(String[] args) {
         final int[] sample = new int[1000000];
         for (int i = 0; i < sample.length; i++) {
             sample[i] = generateBaseAttribute();
         }
         MathUtil.analyze(sample);
+        System.out.println("Hello, world!");
     }
 
     public static int calculateModifier(int attribute) {

@@ -1,0 +1,4 @@
+# Compiled code
+*.class
+bin/
+out/

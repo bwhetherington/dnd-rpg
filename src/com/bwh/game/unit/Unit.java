@@ -107,5 +107,7 @@ public class Unit extends Entity {
         }
     }
 
-    public void setProfession(Profession profession) {}
+    public void setProfession(Profession profession) {
+        this.profession = profession;
+    }
 }

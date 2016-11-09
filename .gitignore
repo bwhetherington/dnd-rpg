@@ -1,8 +1,15 @@
-# Compiled code
-*.class
-*.iml
+# macOS Stuff
 .DS_Store
+
+# IDE Stuff
+*.iml
 .idea/
+.settings/
+test/
+
+# Compiled Code
 bin/
 out/
+*.class
+*.jar
 

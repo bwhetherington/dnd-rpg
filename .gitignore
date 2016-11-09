@@ -1,4 +1,8 @@
 # Compiled code
 *.class
+*.iml
+.DS_Store
+.idea/
 bin/
 out/
+

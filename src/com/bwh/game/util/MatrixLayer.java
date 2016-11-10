@@ -11,7 +11,7 @@ public class MatrixLayer<T> extends AbstractLayer<T> {
         super(width, height);
         matrix = new Object[width][height];
     }
-    
+
     @Override
     public T get(int x, int y) {
         checkPoint(x, y);

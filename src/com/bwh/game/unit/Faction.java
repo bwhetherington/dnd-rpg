@@ -21,11 +21,13 @@ public enum Faction {
 
     private Map<Faction, Allegiance> allegiances;
 
-    @SafeVarargs
-	Faction(Pair<Faction, Allegiance>... pairs) {
+    Faction() {
         allegiances = new HashMap<>();
     }
 
+    /**
+     * @param pairs pairs of factions and their relative l
+     */
     @SafeVarargs
 	private final void setAllegiances(Pair<Faction, Allegiance>... pairs) {
         allegiances.clear();

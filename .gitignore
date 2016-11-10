@@ -1,11 +1,15 @@
 # macOS Stuff
 .DS_Store
 
-# IDE Stuff
+# IntelliJ
 *.iml
 .idea/
-.settings/
 test/
+
+# Eclipse
+.classpath
+.project
+.settings/
 
 # Compiled Code
 bin/

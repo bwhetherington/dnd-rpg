@@ -1,12 +1,14 @@
 package com.bwh.game.unit;
 
+import java.awt.Graphics2D;
+import java.awt.Point;
+
 import com.bwh.game.graphics.Renderable;
 import com.bwh.game.graphics.Sprite;
 
-import java.awt.*;
-
 /**
- * Created by bwh on 11/6/16.
+ * @author Benjamin Hetherington
+ * @since 11/10/2016
  */
 public class Entity implements Renderable {
     private Point location;

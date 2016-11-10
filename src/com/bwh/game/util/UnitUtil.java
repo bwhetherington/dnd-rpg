@@ -1,14 +1,18 @@
 package com.bwh.game.util;
 
-import java.util.*;
+import java.util.EnumMap;
+import java.util.Map;
 
 import com.bwh.game.unit.Attribute;
+import com.bwh.game.unit.Unit;
 
 /**
- * Created by bwh on 11/9/16.
+ * @author Benjamin Hetherington
+ * @since 11/10/2016
  */
-public class UnitUtil {
-
+public final class UnitUtil {
+	private UnitUtil() {}
+	
     public static int generateBaseAttribute() {
         final int[] rolls = new int[4];
         for (int i = 0; i < rolls.length; i++) {
@@ -38,20 +42,57 @@ public class UnitUtil {
         return modifiers;
     }
 
-    public static void main(String[] args) {
-        final int[] sample = new int[1000000];
-        for (int i = 0; i < sample.length; i++) {
-            sample[i] = generateBaseAttribute();
-        }
-        MathUtil.analyze(sample);
-        System.out.println("Hello, world!");
-    }
-
     public static int calculateModifier(int attribute) {
         return (attribute - 10) / 2;
     }
 
     public static int calculateProficiencyBonus(int level) {
         return level / 2 + 2;
+    }
+    
+    public static int generateLifeStat(Unit unit) {
+    	return 10 + unit.getAttributeModifier(Attribute.CONSTITUTION)
+    	+ unit.getAttributeModifier(Attribute.STRENGTH);
+    }
+    
+    public static int generateManaStat(Unit unit) {
+    	return 10 + unit.getAttributeModifier(Attribute.INTELLIGENCE)
+    	+ unit.getAttributeModifier(Attribute.WISDOM);
+    }
+    
+    public static void generateUnitStats(Unit unit) {
+    	// Life
+    	final int life = generateLifeStat(unit);
+    	unit.setLifeMax(life);
+    	unit.setLife(life);
+    	
+    	// Mana
+    	final int mana = generateManaStat(unit);
+    	unit.setManaMax(mana);
+    	unit.setMana(mana);
+    	
+    	// XP
+    	final int xp = generateXPRequirement(unit);
+    	unit.setXPMax(xp);
+    	unit.setXP(0);
+    }
+    
+    public static int generateXPRequirement(Unit unit) {
+    	return generateXPRequirement(unit.getLevel());
+    }
+    
+    /**
+     * 1/4 * level^2 + 4 * level + 15
+     * @param level
+     * @return
+     */
+    public static int generateXPRequirement(int level) {
+    	return 15 + 4 * level + level * level / 4;
+    }
+    
+    public static void main(String[] args) {
+    	for (int i = 0; i < 80; i++) {
+    		System.out.printf("Level %d: %d%n", i, generateXPRequirement(i));
+    	}
     }
 }

@@ -5,9 +5,12 @@ import java.util.Random;
 import java.util.Arrays;
 
 /**
- * Created by bwh on 11/8/16.
+ * @author Benjamin Hetherington
+ * @since 11/10/2016
  */
-public class MathUtil {
+public final class MathUtil {
+	private MathUtil() {}
+	
     // Constants
     public static final Point ORIGIN = new Point(0, 0);
 

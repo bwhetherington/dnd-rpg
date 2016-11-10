@@ -1,7 +1,8 @@
 package com.bwh.game;
 
 /**
- * Created by bwh on 11/6/16.
+ * @author Benjamin Hetherington
+ * @since 11/10/2016
  */
 public class Game {
 

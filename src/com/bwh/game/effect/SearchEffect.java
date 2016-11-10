@@ -1,7 +1,7 @@
 package com.bwh.game.effect;
 
 /**
- * Created by bwh on 11/8/16.
+ * @author Benjamin Hetherington
  */
 public class SearchEffect extends AbstractEffect {
 

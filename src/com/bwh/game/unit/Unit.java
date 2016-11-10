@@ -2,6 +2,7 @@ package com.bwh.game.unit;
 
 import com.bwh.game.graphics.Sprite;
 import com.bwh.game.util.MathUtil;
+import com.bwh.game.util.UnitUtil;
 
 import java.awt.*;
 import java.util.EnumMap;
@@ -41,9 +42,107 @@ public class Unit extends Entity {
     }
 
     /**
+	 * @return the life
+	 */
+	public int getLife() {
+		return life;
+	}
+
+	/**
+	 * @param life the life to set
+	 */
+	public void setLife(int life) {
+		this.life = life;
+	}
+
+	/**
+	 * @return the lifeMax
+	 */
+	public int getLifeMax() {
+		return lifeMax;
+	}
+
+	/**
+	 * @param lifeMax the lifeMax to set
+	 */
+	public void setLifeMax(int lifeMax) {
+		this.lifeMax = lifeMax;
+	}
+
+	/**
+	 * @return the mana
+	 */
+	public int getMana() {
+		return mana;
+	}
+
+	/**
+	 * @param mana the mana to set
+	 */
+	public void setMana(int mana) {
+		this.mana = mana;
+	}
+
+	/**
+	 * @return the manaMax
+	 */
+	public int getManaMax() {
+		return manaMax;
+	}
+
+	/**
+	 * @param manaMax the manaMax to set
+	 */
+	public void setManaMax(int manaMax) {
+		this.manaMax = manaMax;
+	}
+
+	/**
+	 * @return the xp
+	 */
+	public int getXP() {
+		return xp;
+	}
+
+	/**
+	 * @param xp the xp to set
+	 */
+	public void setXP(int xp) {
+		this.xp = xp;
+	}
+
+	/**
+	 * @return the xpMax
+	 */
+	public int getXPMax() {
+		return xpMax;
+	}
+
+	/**
+	 * @param xpMax the xpMax to set
+	 */
+	public void setXPMax(int xpMax) {
+		this.xpMax = xpMax;
+	}
+
+	/**
+	 * @return the level
+	 */
+	public int getLevel() {
+		return level;
+	}
+
+	/**
+	 * @param level the level to set
+	 */
+	public void setLevel(int level) {
+		this.level = level;
+	}
+
+	/**
      * Sets the specified attribute to the specified value.
-     * @param att The attribute
-     * @param val The value
+     * @param att the attribute
+     * @param val the value
      */
     public void setAttribute(Attribute att, int val) {
         attributes.put(att, val);
@@ -51,17 +150,28 @@ public class Unit extends Entity {
 
     /**
      * Returns the unit's specified attribute value.
-     * @param att The attribute to check
-     * @return The attribute's value
+     * @param att the attribute to check
+     * @return the attribute's value
      */
     public int getAttribute(Attribute att) {
-        return attributes.get(att);
+        return attributes.get(att) + getProfessionAttributeBonus(att);
+    }
+    
+    public int getAttributeModifier(Attribute att) {
+    	return UnitUtil.calculateModifier(getAttribute(att));
+    }
+    
+    private int getProfessionAttributeBonus(Attribute att) {
+    	if (profession == null) {
+    		return 0;
+    	}
+    	return profession.getAttributeBonus(att);
     }
 
     /**
      * Reduces the unit's health by the specified amount. If the life drops
      * below 0, the unit is killed.
-     * @param amount The amount to reduce the healthy by
+     * @param amount the amount to reduce the healthy by
      */
     public void damage(int amount) {
         life -= amount;
@@ -74,8 +184,8 @@ public class Unit extends Entity {
     /**
      * Attempts to use the specified ability, and returns whether or not the
      * ability was successfully used.
-     * @param ability The specified ability
-     * @return Whether or not the ability was used
+     * @param ability the specified ability
+     * @return whether or not the ability was used
      */
     public boolean useAbility(Ability ability) {
         final int cost = ability.getCost();
@@ -89,8 +199,8 @@ public class Unit extends Entity {
 
     /**
      * Returns the allegiance of this unit with respect to the other unit.
-     * @param other The unit to check allegiance to
-     * @return The allegiance to the other unit
+     * @param other the unit to check allegiance to
+     * @return the allegiance to the other unit
      */
     public Allegiance allegianceTo(Unit other) {
         return faction.allegianceTo(other.faction);
@@ -107,6 +217,12 @@ public class Unit extends Entity {
         }
     }
 
+    /**
+     * Sets the unit's profession to the specified profession. A unit's
+     * profession provides a set of abilities and a set of attributes in which
+     * they are proficient in and receive bonuses for.
+     * @param profession the unit's profession
+     */
     public void setProfession(Profession profession) {
         this.profession = profession;
     }

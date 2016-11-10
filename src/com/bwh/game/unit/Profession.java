@@ -1,22 +1,21 @@
 package com.bwh.game.unit;
 
-import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
-import java.util.Set;
 
 /**
- * Created by bwh on 11/7/16.
+ * @author Benjamin Hetherington
+ * @since 11/9/2016
  */
 public class Profession {
     private Map<Integer, Ability> abilities;
     private String name;
-    private Set<Attribute> bonusAttributes;
+    private Map<Attribute, Integer> attributeBonuses;
 
-    public Profession(String name, Map<Integer, Ability> abilities, Set<Attribute> bonusAttributes) {
+    public Profession(String name, Map<Integer, Ability> abilities,
+    		Map<Attribute, Integer> attributeBonuses) {
         this.name = name;
         this.abilities = abilities;
-        this.bonusAttributes = bonusAttributes;
+        this.attributeBonuses = attributeBonuses;
     }
 
     public String getName() {
@@ -27,7 +26,8 @@ public class Profession {
         return abilities;
     }
 
-    public Set<Attribute> getBonusAttributes() {
-        return bonusAttributes;
+    public int getAttributeBonus(Attribute att) {
+    	final Integer bonus = attributeBonuses.get(att);
+    	return bonus == null ? 0 : bonus;
     }
 }

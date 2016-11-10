@@ -1,7 +1,8 @@
 package com.bwh.game.util;
 
 /**
- * Created by bwh on 11/9/16.
+ * @author Benjamin Hetherington
+ * @since 11/10/2016
  */
 public class Pair<A, B> {
     public final A a;

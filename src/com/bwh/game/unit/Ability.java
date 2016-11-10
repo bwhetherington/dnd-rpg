@@ -3,7 +3,8 @@ package com.bwh.game.unit;
 import com.bwh.game.effect.Effect;
 
 /**
- * Created by bwh on 11/8/16.
+ * @author Benjamin Hetherington
+ * @since 11/10/2016
  */
 public class Ability {
     private int cost;

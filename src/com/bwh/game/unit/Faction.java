@@ -1,12 +1,13 @@
 package com.bwh.game.unit;
 
-import com.bwh.game.util.Pair;
-
 import java.util.HashMap;
 import java.util.Map;
 
+import com.bwh.game.util.Pair;
+
 /**
- * Created by bwh on 11/9/16.
+ * @author Benjamin Hetherington
+ * @since 11/9/2016
  */
 public enum Faction {
     GOOD,
@@ -20,11 +21,13 @@ public enum Faction {
 
     private Map<Faction, Allegiance> allegiances;
 
-    Faction(Pair<Faction, Allegiance>... pairs) {
+    @SafeVarargs
+	Faction(Pair<Faction, Allegiance>... pairs) {
         allegiances = new HashMap<>();
     }
 
-    private void setAllegiances(Pair<Faction, Allegiance>... pairs) {
+    @SafeVarargs
+	private final void setAllegiances(Pair<Faction, Allegiance>... pairs) {
         allegiances.clear();
         for (Pair<Faction, Allegiance> allegiance : pairs) {
             allegiances.put(allegiance.a, allegiance.b);

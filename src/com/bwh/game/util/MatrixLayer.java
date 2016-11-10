@@ -3,12 +3,13 @@ package com.bwh.game.util;
 import java.util.Arrays;
 
 /**
+ * An implementation of <tt>Layer</tt> that uses a two-dimensional array to
+ * store elements.
  * @author Benjamin Hetherington
  * @since 11/10/2016
  */
 public class MatrixLayer<T> extends AbstractLayer<T> {
     private Object[][] matrix;
-    private int width, height;
 
     /**
      * @param width the width of the layer

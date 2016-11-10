@@ -96,7 +96,7 @@ public abstract class AbstractLayer<T> implements Layer<T> {
      */
     protected void checkPoint(int x, int y) {
         if (!isValid(x, y)) {
-            throw new IllegalArgumentException();
+            throw new IndexOutOfBoundsException(String.format("(%d, %d)", x, y));
         }
     }
 }
